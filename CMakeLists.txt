@@ -4,6 +4,11 @@ set(CMAKE_CXX_STANDARD 14)
 
 project(init-cpp)
 
+find_package(fmt)
+find_package(spdlog)
+
+include_directories(${CMAKE_SOURCE_DIR}/src/include)
+
 add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(examples)
