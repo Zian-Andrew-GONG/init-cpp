@@ -2,6 +2,7 @@ SHELL := /bin/bash -o pipefail
 
 export ROOT := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 export BUILD := ${ROOT}/build
+export THIRDPARTY := $(ROOT)/thirdparty
 
 
 ci.clean:
@@ -25,3 +26,9 @@ ci.test:
 
 ci.all:
 	make ci.rebuild && make ci.test
+
+ci.thirdparty:
+	cd $(ROOT) && mkdir -p $(THIRDPARTY) && \
+	git clone -b v1.11.0 --depth 1 git@github.com:gabime/spdlog.git     $(THIRDPARTY)/spdlog     && \
+	git clone -b 9.1.0   --depth 1 git@github.com:fmtlib/fmt.git        $(THIRDPARTY)/fmt        && \
+	git clone -b v1.13.0 --depth 1 git@github.com:google/googletest.git $(THIRDPARTY)/googletest
