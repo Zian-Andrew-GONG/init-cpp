@@ -1,14 +1,6 @@
-#ifndef __HELLO_H__
-#define __HELLO_H__
+#pragma once
 
-class Hello
-{
+class Hello {
 public:
-    void print();
+  void print();
 };
-
-inline int add(int a, int b) {
-    return a + b;
-}
-
-#endif
